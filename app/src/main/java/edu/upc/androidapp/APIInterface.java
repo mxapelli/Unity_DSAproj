@@ -37,6 +37,8 @@ public interface APIInterface {
     @PATCH("/dsaApp/User/{userID}/UpdateCash")
     Call<Usuario> updateCash(@Path("userID") String userID,@Body Usuario user);
 
+    @GET ("/dsaApp/Maps/{mapID}/")
+    Call<UnityMap> getMap(@Path("mapID") String mapID);
 
 
 }
