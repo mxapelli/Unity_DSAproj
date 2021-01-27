@@ -1,2 +1,2 @@
 configurations.maybeCreate("default")
-artifacts.add("default", file('unityLibrary-debug.aar'))
+artifacts.add("default", file('unityLibrary-project.aar'))
