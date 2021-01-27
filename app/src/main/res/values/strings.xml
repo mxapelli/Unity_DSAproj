@@ -8,4 +8,5 @@
     <string name="cancel" />
     <string name="dialog_fire_missiles" />
     <string name="fire" />
+    <string name="game_view_content_description">Contentdescription</string>
 </resources>

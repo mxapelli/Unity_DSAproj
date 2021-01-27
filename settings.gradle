@@ -1,2 +1,3 @@
+include ':unityLibrary-good'
 include ':app'
 rootProject.name = "AndroidApp"

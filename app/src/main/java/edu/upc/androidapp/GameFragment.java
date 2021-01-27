@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.unity3d.player.UnityPlayerActivity;
+
 public class GameFragment extends Fragment {
     Button game;
     @Nullable
@@ -21,7 +23,7 @@ public class GameFragment extends Fragment {
         game.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), Game.class);
+                Intent intent = new Intent(v.getContext(), UnityPlayerActivity.class);
                 startActivity(intent);
             }
         });

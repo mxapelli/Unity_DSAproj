@@ -22,10 +22,10 @@ import retrofit2.Response;
 
 
 public class UnityAPI {
-
+    static String mapvector;
+    static String maplevel;
     public static String getLevel(String num)
     {
-        final String[] mapvector = new String[1];
         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
         Call<UnityMap> call = apiInterface.getMap(num);
         call.enqueue(new Callback<UnityMap>() {
@@ -34,25 +34,23 @@ public class UnityAPI {
                 Log.d("TAG", response.code() + "");
                 if (response.code() == 201) {
                     UnityMap map = response.body();
-                    mapvector[0] = map.getVectMap();
+                    mapvector = map.getVectMap();
                 } else {
                     Log.d("Error", "Login failed");
-                    mapvector[0] = "";
+                    mapvector = "";
                 }
             }
-
             @Override
             public void onFailure(Call<UnityMap> call, Throwable t) {
                 call.cancel();
-                mapvector[0] = "";
                 Log.d("Error", "Failure");
+                mapvector = "";
             }
         });
-        return mapvector[0];
+        return mapvector;
     }
     public static String getLevelName(String num)
     {
-        final String[] maplevel = new String[1];
         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
         Call<UnityMap> call = apiInterface.getMap(num);
         call.enqueue(new Callback<UnityMap>() {
@@ -61,21 +59,21 @@ public class UnityAPI {
                 Log.d("TAG", response.code() + "");
                 if (response.code() == 201) {
                     UnityMap map = response.body();
-                    maplevel[0] = map.getMapName();
+                    maplevel = map.getMapName();
                 } else {
                     Log.d("Error", "Login failed");
-                    maplevel[0] = "";
+                    maplevel = "";
                 }
             }
 
             @Override
             public void onFailure(Call<UnityMap> call, Throwable t) {
                 call.cancel();
-                maplevel[0] = "";
+                maplevel = "";
                 Log.d("Error", "Failure");
             }
         });
-        return maplevel[0];
+        return maplevel;
     }
 
 
