@@ -7,9 +7,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,7 +26,8 @@ public class ProfileFragment extends Fragment {
     Usuario user=new Usuario();
     String id;
     TextView cash;
-    TextView username;
+    TextView username, email;
+    ImageView image;
     private static final String MY_PREFS_NAME = "user_pass_pref";
     @Nullable
     @Override
@@ -37,7 +37,8 @@ public class ProfileFragment extends Fragment {
         View v= inflater.inflate(R.layout.fragment_profile, container,false);
         username=v.findViewById(R.id.username);
         cash=v.findViewById(R.id.coins);
-
+        email=v.findViewById(R.id.email);
+        image= (ImageView) v.findViewById(R.id.imageView6);
         Button inventoryButton= (Button) v.findViewById(R.id.Inventory);
         //CallInventory
         Call<Inventory> inventoryCall =apiInterface.getInventory(id);
@@ -135,7 +136,13 @@ public class ProfileFragment extends Fragment {
     public void perfil(Usuario user){
         username.setText(user.getUname());
         cash.setText("Coins:"+ user.getCash());
+        email.setText(user.getEmail());
+        //Image
+        String name=username.getText().toString().toLowerCase();
+        int imageId=image.getContext().getResources().getIdentifier("drawable/"+name, null,getContext().getPackageName());
+        image.setImageResource(imageId);
 
     }
+
 
 }
